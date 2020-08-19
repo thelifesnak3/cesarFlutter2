@@ -1,6 +1,5 @@
 import 'package:cesarFlutter/app/common/app_colors/app_colors.dart';
 import 'package:cesarFlutter/app/common/components/btn_get_start.dart';
-import 'package:cesarFlutter/app/common/styles/styles.dart';
 import 'package:cesarFlutter/app/pages/splash/splash_tab.dart';
 import 'package:flutter/material.dart';
 
@@ -20,11 +19,8 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: AppColors.splashBackgroundColor,
-      //   elevation: 0,
-      // ),
+    return SafeArea(
+      child: Scaffold(
       body: Container(
         color: AppColors.splashBackgroundColor,
         padding: EdgeInsets.all(16),
@@ -57,11 +53,21 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
             ),
             Align(
                 alignment: Alignment.bottomRight,
-                child: BtnGetStart()
+                child: BtnGetStart(_openHomePage)
             )
           ],
         )
       ) 
+    )
     );
   }
+
+  void _openHomePage() {
+    Navigator.pushNamed(
+        context,
+        'home'
+    );
+  }
+
 }
+

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Background Colors
-//  static Color splashBackgroundColor = Colors.redAccent;
   static Color splashBackgroundColor = Color(getColorHexFromStr("F51E38"));
   static Color defaultBackgroundColor = Color(0xffF6F5F5);
-
+  static Color defaultHomeBackgroundColor = Color(getColorHexFromStr("F4F9FF"));
   // Text Colors
+  static Color defaultTextButton = Color(getColorHexFromStr("E6152B"));
 }
 
 int getColorHexFromStr(String colorStr) {
