@@ -1,0 +1,20 @@
+ 
+{
+    "albums": [
+        {
+            "title": "Sucker",
+            "singer": "Jonas Brothers",
+            "imageURL": "https://i.imgur.com/OUJbyTT.png"
+        },
+        {
+            "title": "I Dont's Care",
+            "singer": "Ed Sheerans & Bieber's",
+            "imageURL": "https://i.imgur.com/AuOuk0Z.png"
+        },
+        {
+            "title": "Old Town Road",
+            "singer": "Lil Nas",
+            "imageURL": "https://i.imgur.com/dVusUgq.png"
+        }
+  ]
+}

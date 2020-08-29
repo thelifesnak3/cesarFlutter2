@@ -18,6 +18,8 @@ class HomeTopTrack extends StatelessWidget {
         Row(
           children: [
             Container(
+              width: 44.41,
+              height: 44.41,
               child: Image.asset(imagePath),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25.0),

@@ -7,6 +7,8 @@ class AppColors {
   static Color defaultHomeBackgroundColor = Color(getColorHexFromStr("F4F9FF"));
   // Text Colors
   static Color defaultTextButton = Color(getColorHexFromStr("E6152B"));
+  // Layout Colors
+  static Color defaultBottomNavigationColor = Color(getColorHexFromStr("#3E2AD1"));
 }
 
 int getColorHexFromStr(String colorStr) {

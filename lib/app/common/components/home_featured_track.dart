@@ -15,6 +15,8 @@ class HomeFeaturedTrack extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
+          height: 112,
+          width: 112,
           child: Image.asset(imagePath),
         ),
         SizedBox(height: 3),

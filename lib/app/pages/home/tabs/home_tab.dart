@@ -97,15 +97,15 @@ class HomeTab extends StatelessWidget {
                       children: [
                         Padding(
                           padding: EdgeInsets.only(right: 15),
-                          child: HomeFeaturedTrack("assets/images/track_1.png", "Sucker", "Jonas Brothers"),
+                          child: HomeFeaturedTrack("assets/images/featured_track_1.png", "Sucker", "Jonas Brothers"),
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 15),
-                          child: HomeFeaturedTrack("assets/images/track_2.png", "I Don't Care", "Ed Sheerans & Bieber's"),
+                          child: HomeFeaturedTrack("assets/images/featured_track_2.png", "I Don't Care", "Ed Sheerans & Bieber's"),
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 15),
-                          child: HomeFeaturedTrack("assets/images/track_3.png", "Old Town Road", "Lil Nas"),
+                          child: HomeFeaturedTrack("assets/images/featured_track_3.png", "Old Town Road", "Lil Nas"),
                         ),
                       ],
                     ),
