@@ -109,8 +109,8 @@ class _HomeTabState extends State<HomeTab> {
                     style: Styles.homeTitleLabel,
                   ),
                   SizedBox(height: 15),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
+                  Container(
+                    height: 150,
                     child: Observer(builder: (_) {
                       
                       if(homeController.ofFeaturedAlbums.error != null) {
@@ -121,10 +121,23 @@ class _HomeTabState extends State<HomeTab> {
                         return Center(child: CircularProgressIndicator());
                       }
 
+                      listFeaturedAlbum = homeController.ofFeaturedAlbums.value;
+                    
+                      if(listFeaturedAlbum == null) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+
+                      print(listFeaturedAlbum.data);
+
                       return ListView.builder(
-                        padding: EdgeInsets.only(right: 15),
-                        itemBuilder: (_, index) { return HomeFeaturedTrack(listFeaturedAlbum.data, index); },
-                        itemCount: listFeaturedAlbum.data.length
+                        itemBuilder: (_, index) { 
+                          return Padding(
+                            padding: EdgeInsets.only(right: 15),
+                            child: HomeFeaturedTrack(listFeaturedAlbum.data, index),
+                          ); 
+                        },
+                        itemCount: listFeaturedAlbum.data.length,
+                        scrollDirection: Axis.horizontal,
                       );
                     }),
                   ),

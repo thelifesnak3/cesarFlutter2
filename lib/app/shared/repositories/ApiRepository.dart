@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cesarFlutter/app/models/Album.dart';
 import 'package:cesarFlutter/app/shared/ApiResponse.dart';
 import 'package:cesarFlutter/app/shared/Constants.dart';
@@ -11,14 +13,11 @@ class ApiRepository {
 
   Future<ApiResponse> getAlbums() async {
     ApiResponse apiResponse = new ApiResponse();
-    print("AQUIIIIIII");
     try {
       var response = await dio.get(API_URL_BASE+"albums.json");
-      print("aqui 2");
       apiResponse.status = 200;
-      print(response);
       if(response.data != null) {
-        apiResponse.data = (response.data as List)
+        apiResponse.data = (jsonDecode(response.data)['data'] as List)
             .map((item) => AlbumModel.fromJson(item))
             .toList();
 

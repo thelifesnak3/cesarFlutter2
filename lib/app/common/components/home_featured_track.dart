@@ -11,13 +11,16 @@ class HomeFeaturedTrack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(albums[index].title);
+    print(albums[index].singer);
+    print(albums[index].imageUrl);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           height: 112,
           width: 112,
-          child: Image.asset(albums[index].imageUrl),
+          child: Image.network(albums[index].imageUrl),
         ),
         SizedBox(height: 3),
         Text(
