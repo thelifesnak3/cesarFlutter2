@@ -4,9 +4,27 @@ import 'package:cesarFlutter/app/common/components/btn_share.dart';
 import 'package:cesarFlutter/app/common/components/home_featured_track.dart';
 import 'package:cesarFlutter/app/common/components/home_top_track.dart';
 import 'package:cesarFlutter/app/common/styles/styles.dart';
+import 'package:cesarFlutter/app/pages/home/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-class HomeTab extends StatelessWidget {
+class HomeTab extends StatefulWidget {
+  @override
+  _HomeTabState createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
+
+  final homeController = Modular.get<HomeController>();
+  var listFeaturedAlbum;
+
+  @override
+  void initState() {
+    homeController.getAlbums();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -93,22 +111,22 @@ class HomeTab extends StatelessWidget {
                   SizedBox(height: 15),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 15),
-                          child: HomeFeaturedTrack("assets/images/featured_track_1.png", "Sucker", "Jonas Brothers"),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 15),
-                          child: HomeFeaturedTrack("assets/images/featured_track_2.png", "I Don't Care", "Ed Sheerans & Bieber's"),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 15),
-                          child: HomeFeaturedTrack("assets/images/featured_track_3.png", "Old Town Road", "Lil Nas"),
-                        ),
-                      ],
-                    ),
+                    child: Observer(builder: (_) {
+                      
+                      if(homeController.ofFeaturedAlbums.error != null) {
+                        return Center(child: Text(homeController.ofFeaturedAlbums.error.toString()));
+                      }
+
+                      if(homeController.ofFeaturedAlbums == null) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+
+                      return ListView.builder(
+                        padding: EdgeInsets.only(right: 15),
+                        itemBuilder: (_, index) { return HomeFeaturedTrack(listFeaturedAlbum.data, index); },
+                        itemCount: listFeaturedAlbum.data.length
+                      );
+                    }),
                   ),
                   SizedBox(height: 20),
                   Text(

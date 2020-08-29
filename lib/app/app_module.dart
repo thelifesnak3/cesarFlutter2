@@ -1,5 +1,7 @@
+import 'package:cesarFlutter/app/pages/home/home_controller.dart';
 import 'package:cesarFlutter/app/pages/home/home_page.dart';
 import 'package:cesarFlutter/app/pages/splash/splash_page.dart';
+import 'package:cesarFlutter/app/shared/repositories/ApiRepository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -9,19 +11,19 @@ class AppModule extends  MainModule {
 
   @override
   List<Bind> get binds => [
-    // Bind((i) => AppController()),
-    // Bind((i) => ConsultarSeloController(i.get<SeloRepository>())),
+    Bind((i) => HomeController(i.get<ApiRepository>())),
+    Bind((i) => ApiRepository()),
   ];
 
   @override
-  List<Router> get routers => [
+  List<ModularRouter> get routers => [
                   /*-----------
                     |ROUTES|
                   -----------*/
-    Router('/',
+    ModularRouter('/',
         child: (_, args) => SplashPage()),
 
-    Router('/home',
+    ModularRouter('/home',
         child: (_, args) => HomePage(),
         transition: TransitionType.rightToLeftWithFade)
   ];

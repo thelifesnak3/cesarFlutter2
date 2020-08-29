@@ -1,0 +1,1 @@
+const API_URL_BASE = "https://raw.githubusercontent.com/thelifesnak3/cesarFlutter2/master/assets/network/";
